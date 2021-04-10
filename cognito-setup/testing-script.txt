@@ -1,0 +1,9 @@
+-- signpup
+aws cognito-idp sign-up --client-id 6lklq0cd00nsikubmgq5k6tsm4  --username rajesh.hofo@gmail.com  --password 123456
+
+-- get the session /send an email
+aws cognito-idp initiate-auth --client-id 6lklq0cd00nsikubmgq5k6tsm4 --auth-flow CUSTOM_AUTH --auth-parameters USERNAME="rajesh.hofo@gmail.com",PASSWORD=""
+
+// get the token
+aws cognito-idp respond-to-auth-challenge --client-id 6lklq0cd00nsikubmgq5k6tsm4 --challenge-name CUSTOM_CHALLENGE --challenge-responses ANSWER=030828,USERNAME="rajesh.hofo@gmail.com"
+--session ""

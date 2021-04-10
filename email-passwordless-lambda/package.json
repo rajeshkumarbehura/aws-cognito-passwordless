@@ -1,0 +1,21 @@
+{
+  "name": "create-auth-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create-auth-challenge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./dist && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-secure-random-digit": "^1.0.9",
+    "@types/aws-lambda": "^8.10.71",
+    "@types/node": "^14.14.22",
+    "aws-sdk": "^2.834.0",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {}
+}

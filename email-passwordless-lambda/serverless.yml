@@ -1,0 +1,48 @@
+service: passwordless-authentication
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  # MAKE SURE ABOUT YOUR REGION
+  region: ap-southeast-1
+  memorySize: 128
+  timeout: 30
+  environment:
+    #SES_FROM_ADDRESS: rajesh.xxxx@mail.com
+    SES_FROM_ADDRESS: <<SES_VERIFIED_EMAIL_ID>>
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ses:SendEmail"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "cognito-idp:AdminUpdateUserAttributes"
+      Resource: "*"
+
+functions:
+  createAuthChallenge:
+    handler: dist/create-auth-challenge.handler
+    name: create-auth-challenge
+    description: Passwordless create auth challenge
+
+  preSignupTrigger:
+    handler: dist/pre-sign-up.handler
+    name: pre-signup-trigger
+    description: Passwordless pre signup Trigger
+
+  defineAuthChallenge:
+    handler: dist/define-auth-challenge.handler
+    name: define-auth-challenge
+    description: Passwordless define auth challenge
+
+  postAuthentication:
+    handler: dist/post-authentication.handler
+    name: post-authentication
+    description: Passwordless post authentication
+
+  verifyAuthChallengeResponse:
+    handler: dist/verify-auth-challenge-response.handler
+    name: verify-auth-challenge-response
+    description: Passwordless verify auth challenge response

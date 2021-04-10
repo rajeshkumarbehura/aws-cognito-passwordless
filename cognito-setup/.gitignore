@@ -1,0 +1,9 @@
+
+# Dependency directories
+node_modules/
+jspm_packages/
+dist/
+.serverless/
+.terraform/
+terraform.tfstate.backup
+terraform.tfstate
